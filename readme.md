@@ -1,72 +1,85 @@
-# Resume-NG
+# 简历项目 (Resume NG)
 
-A LaTeX resume designed for optimal information density and aesthetic appeal.
+现代化的 LaTeX 简历模板，采用模块化的项目结构，支持一键编译和自动清理。
 
-> [!IMPORTANT]
-> [English Version is in Here!](https://github.com/fky2015/resume-ng/tree/english).
-> You can also find a download link in [GitHub Release](https://github.com/fky2015/resume-ng/releases/latest).
+## 项目目录结构
 
-一个旨在实现最佳的信息密度和美学吸引力的 $\LaTeX$ 简历排版模板项目。
-
-> [!NOTE] 
-> 不熟悉 LaTeX？欢迎尝鲜 Typst 版本的 [Resume-NG](https://github.com/fky2015/resume-ng-typst)！
-
-<div align="center">
-  <img src="https://github.com/fky2015/resume-ng/assets/16451516/0934b2be-6b8f-4766-a242-6c07b7036f1f" width="90%">
-</div>
-
-本模板的特性包括：
-- 通过调整排版提高简历的信息密度。
-- 支持生成 PDF 书签。
-- 精简依赖，不默认引入其他字体，不默认引入图标。
-- 提供超链接、脚注、非重点内容的排版示例。
-- (🖼️)支持插入照片（请看代码注释）。
+```
+resume-ng/
+├── build.sh              # 一键编译脚本
+├── readme.md             # 项目说明文档
+├── README_PROJECT.md     # 项目结构说明
+├── .gitignore           # Git忽略文件配置
+├── config/              # 配置文件目录
+│   └── latexmkrc        # LaTeX编译配置
+├── src/                 # LaTeX源代码目录
+│   ├── main.tex         # 主要的简历内容文件
+│   └── resume.cls       # 自定义的简历样式文件
+├── resource/            # 资源文件目录
+│   └── image.png        # 照片等图片资源
+└── result/              # 编译结果目录
+    └── resume.pdf       # 最终生成的简历PDF
+```
 
 ## 使用方法
 
-### 本地编译
+### 编译简历
+```bash
+# 编译简历
+./build.sh
 
-0. 确保已经安装 LaTeX 发行版。
-1. **克隆或下载**本项目代码。
-2. 直接运行 `latexmk` 即可。
+# 编译并自动打开PDF预览
+./build.sh view
 
-### Overleaf 在线平台
+# 清理临时文件
+./build.sh clean
+```
 
-直接访问[此链接][overleaf]即可。
+### 编译脚本说明
 
-## 宏
+- **临时文件管理**: 所有LaTeX编译的临时文件(.aux, .log等)都存放在`/tmp/resume-build/`目录中，不会污染项目目录
+- **自动二次编译**: 脚本会自动执行两次编译以确保交叉引用正确
+- **资源文件处理**: 智能复制资源文件到临时目录，避免递归文件夹问题
+- **临时目录清理**: 每次构建前自动清理临时目录，确保干净的编译环境
+- **结果输出**: 最终的PDF文件会保存到`result/resume.pdf`
+- **彩色输出**: 编译过程带有彩色提示信息
+- **跨平台支持**: 自动检测系统并使用合适的PDF查看器
 
-常用用法可参考 `main.tex` 中的示例内容。
+### 修改简历内容
 
-- `\ResumeName{}` 定义简历标题（一般是姓名）。
-- `\ResumeContact{}` 添加一个联系方式。
-- `\ResumeContacts{itemA, itemB, itemC}` 添加多个联系方式。
-- `\ResumeTitle` 渲染标题和联系方式。
-- `\section{}` 节标题。
-- `\ResumeItem[]{}[][]`
-  1. 可选参数，控制 PDF 书签内容。如果不提供则采用参数 2。
-  2. 项标题，左对齐。
-  3. 可选参数，补充信息，在参数 2 后显示。
-  4. 可选参数，右对齐。
-- `\GrayText{}` 改变文字内容为灰色。
-- `\ResumeUrl{}{}` 带有下划线的 `\href` 命令，与 `\href` 用法相同。
+1. 编辑 `src/main.tex` 文件来修改简历内容
+2. 编辑 `src/resume.cls` 文件来修改简历样式
+3. 将图片资源放在 `resource/` 目录下
+4. 修改编译配置可编辑 `config/latexmkrc` 文件
 
-> `[]` 为可选参数， `{}` 为必需参数。
+### 编译配置
 
-## 包依赖
+项目使用 `latexmkrc` 配置文件（位于 `config/` 目录）：
+- **PDF模式**: 设置为模式5，使用 LuaLaTeX 编译器
+- **输出格式**: 仅生成PDF，禁用DVI和PostScript中间格式
+- **优化编译**: 支持现代字体和Unicode处理
 
-**如果你使用 TeXLive/MiKTeX 等主流发行版，可以直接使用本项目，无需手动安装依赖。**
+### Git版本控制
 
-## 有用的相关资源
+- 源代码目录(`src/`)、配置目录(`config/`)和资源目录(`resource/`)会被跟踪
+- 临时文件和生成的PDF文件会被`.gitignore`忽略
+- 如需提交PDF，可以手动添加到Git: `git add result/resume.pdf`
 
-- [Resume Improvement](https://intdouble.com/resume/)
-- GPTs
+## 特性
 
-## 致谢
+- ✅ **清晰的目录结构**: 源码、配置、资源、结果分离
+- ✅ **一键编译**: 简单的命令即可完成编译
+- ✅ **临时文件隔离**: 不污染项目目录
+- ✅ **智能资源处理**: 避免递归文件夹问题
+- ✅ **自动清理**: 每次构建前清理临时目录
+- ✅ **跨平台**: 支持macOS和Linux
+- ✅ **中文支持**: 使用XeLaTeX编译，完美支持中文
+- ✅ **模块化配置**: 配置文件独立管理
+- ✅ **现代编译器**: 支持LuaLaTeX，提供更好的字体和Unicode支持
 
-该项目主要受到 [hijiangtao/resume](https://github.com/hijiangtao/resume) 的启发，
-并基于“提高一页简历中的信息密度”这一排版思路而进一步改进，
-并采用 $\LaTeX3$ 写成。
+## 最近更新
 
-
-[overleaf]: https://www.overleaf.com/docs?snip_uri=https://github.com/fky2015/resume-ng/releases/latest/download/resume-ng-zh.zip&engine=xelatex
+- 📁 新增 `config/` 目录，统一管理配置文件
+- 🔧 修复资源文件递归复制问题
+- 🧹 改进临时目录清理机制
+- 📝 更新文档，完善使用说明

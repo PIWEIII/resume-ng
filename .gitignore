@@ -314,3 +314,14 @@ TSWLatexianTemp*
 # End of https://www.toptal.com/developers/gitignore/api/latex
 
 *.zip
+.codelink
+
+# Resume project structure
+# Ignore temporary build files
+/tmp/
+/result/*.pdf
+
+# Keep source files
+!/src/
+!/resource/
+!/result/

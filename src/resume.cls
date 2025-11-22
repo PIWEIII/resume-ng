@@ -112,7 +112,7 @@
     \zihao{-2} \heiti \g__resume_title_name_tl
   \end{center}
   % Reduce the space.
-  \vspace{-1.4em}
+  \vspace{-1.2em}
   \begin{center}
     \seq_use:Nnnn \g__resume_contacts_seq {~|~} {~|~} {~|~}
   \end{center}
