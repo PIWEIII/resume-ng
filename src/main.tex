@@ -31,12 +31,46 @@
 \ResumeItem
 [公司|职位｜最好一次绩效]
 {贝壳找房（北京）科技有限公司}
-[\textnormal{业务后端研发工程师｜绩效5（2024，杰出）}]
+[\textnormal{高级工程师（P6）|\textbf{ 2024年绩效5（杰出）}}]
 [2022.03—至今]
-\textbf{2024年全年杰出绩效}，主要业务贡献为\textbf{实时/离线标签（数据分发）系统建设、核心人事业务系统、招聘系统AI流程改造}，面向ToB的业务系统有深入的开发经验、具备丰富HiveSQL开发、离线大数据处理经验。
 \begin{itemize}
-  \item \textbf{独立负责实时/离线标签（数据分发）系统建设，}为人力的招聘、经纪人/职能绩效管理、企业文化、人才发展等30+系统提供标签数据支持。
-  \item \textbf{参与 XXX 的需求分析，系统技术方案设计；完成需求开发、灰度测试、上线和监控。}
+  \item \textbf{独立负责实时/离线标签系统建设，}构建Lambda架构支撑全人力方向27种标签数据分发，冷热数据计算分离、逻辑统一。
+  \item \textbf{核心人事系统去PS化改造，}逻辑开关与接口DIFF实现服务平滑切换，重构人力时间轴读写逻辑，实现贝壳人力系统全面自研化。
+  \item \textbf{AI赋能招聘业务流程，}OCR+LLM简化复杂业务表单的填写，RAG+LLM实现内部活水职位智能推荐。
+  \item \textbf{人力中台核心研发，}优化、迭代贝壳P0级B端服务，迭代0故障，稳定性99.99\%，
+  \item \textbf{构建人事报表平台与数据一致性体系，}高性能报表数据产出与读取，通过离线数据任务实现跨系统数据对齐率 99.91\%。
+  \item \textbf{带领企业文化方向研发团队（4人），}负责需求拆解、方案评审与交付质量把控，保障多系统稳定迭代。
+\end{itemize}
+
+\section{项目经历}
+
+\ResumeItem{\textbf{标签系统}}
+[ \textnormal{Lambda架构| HiveSQL→Java(DFS) | LLM \& Prompt | 策略模式}]
+\begin{itemize}
+  \item 构建Lambda架构实现实时/离线标签计算分发，T-1数据以HiveSQL/Spark任务计算，实时数据通过Kafka处理，StarRocks为两类数据提供统一查询支持。
+  \item 自研HiveSQL→Java解析器，将业务规则编码嵌入Kafka计算任务，实现计算逻辑统一。
+  \item 设计标签快照转时间轴算法，基于窗口与偏移计算，实现历史标签高效追溯与查询，使得MySQL可支撑上亿级标签数据的高效读取。
+  \item 对规则代码进行Druid语法树遍历分析，简化规则代码复杂度，配合LLM、Prompt将简化的代码转为自然语言，统一业务语言。
+  \item 策略模式实现基于Apollo热配置的通用刷新模块，解决对象类型配置热更新问题。
+  \item 完整实现Spring Cache抽象，支持Redis分布式缓存方案，提升标签接口查询性能。
+\end{itemize}
+
+\ResumeItem{\textbf{招聘 \& AI}}
+[ \textnormal{LLM \& Prompt | OCR | RAG | 微服务架构 | Redisson}]
+\begin{itemize}
+  \item RAG + LLM 实现智能职位推荐，基于岗位职责与任职要求自动生成岗位标签，结合求职者简历与行为数据，实现个性化岗位推荐。
+  \item OCR + LLM 实现招聘表单智能填写，基于OCR技术提取简历关键信息，结合 LLM 技术生成表单内容，提升招聘效率。
+  \item 微服务架构设计，LLM交互模块独立部署，支持多模型接入与切换，提供统一API接口。
+  \item Redisson分布式锁解决复杂表单暂存数据并发写入问题，保障数据一致性。
+\end{itemize}
+
+\ResumeItem{\textbf{人力中台 \& 核心人事系统（KeHR、LinkHR）}}
+[ \textnormal{微服务 | 任务调度 ｜ 最终一致性 ｜ 缓存}]
+\begin{itemize}
+  \item Reactor响应式编程模型，优化核心员工数据读取接口（平均qps：1800），P99：300ms → 50ms，提升服务整体稳定性。
+  \item 基于Redisson重构原分布式锁方案，解决并发场景下多租户数据同步覆盖问题，保障数据一致性。
+  \item 生产-消费模型优化员工报表数据产出任务，多进程任务简化为单进程多线程任务，降低任务复杂度的同时提升数据产出效率（83%）。
+  \item 结合定时任务与Apollo配置，实现通用外部系统数据推送模块，向北森、帆软等标准系统推送员工与组织架构数据，极大降低数据对接成本。
 \end{itemize}
 
 \section{教育经历}
@@ -48,53 +82,13 @@
 
 \textbf{GPA: 4.5/5.0(专业前 20\%)}，获专业奖学金多次。
 
-\section[技术能力]{技术能力\protect\footnote{与求职岗位无关的技能省略或用灰色表示。}}
+\section[技术能力]{技术能力}
 \begin{itemize}
-  \item \textbf{语言}: 编程不受特定语言限制。常用 Rust, Golang, Python,C++； 熟悉 C, \GrayText{JavaScript}；了解 Lua, Java, \GrayText{TypeScript}。
-  \item \textbf{工作流}: Linux, Shell, (Neo)Vim, Git, GitHub, GitLab.
-  \item \textbf{其他}: 有容器化技术的实践经验，熟悉 Kubernetes 的使用。
-\end{itemize}
-
-\section{项目经历}
-
-\ResumeItem{\textbf{BusTub} 基于 C++ 的简易单机数据库}
-[ \textnormal{CMU 15-445} 课程]
-\begin{itemize}
-  \item 实现了基于可扩展哈希表和LRU-K的内存池管理。实现了可并发的B+树，支持乐观加锁的读写操作。
-  \item 采用火山模型实现了查询、修改、连接、聚合等查询执行器，对部分查询进行了改写与下推。
-  \item 采用 2PL 进行并发控制，支持死锁处理、多种隔离级别、表锁和行锁。
-  \item 对数据库系统有了基本的认识和实践。
-\end{itemize}
-
-
-\ResumeItem{\textbf{Multi-Raft} 分布式 \textbf{KV} 存储系统}
-[ \textnormal{MIT 6.824} 课程]
-\begin{itemize}
-  \item 实现了 Raft 协议的选举、日志复制、持久化、日志压缩等基本功能。
-  \item 基于 Raft 协议实现了满足线性一致性的 KV 数据库。
-  \item 采用 Multi-Raft 架构，支持数据分片，分片迁移，分片垃圾回收和分片迁移时读写优化。
-  \item 对分布式系统的设计考量有了更多的认识。
-\end{itemize}
-
-\ResumeItem{\textbf{ZYX} 平台下的某某共识算法设计与实现}
-[共识算法设计与实现]
-[2021.11—2022.07] 
-
-\begin{itemize}
-  \item 根据 ZYX (Rust 实现的开源区块链框架) 的架构，\textbf{修改并实现某某某共识算法}。
-  \item 针对系统进行性能测试，分析瓶颈，并优化吞吐量；TPS 由 1K 达到 6K。
-  \item 此项目为实验室研究项目的一部分。
-\end{itemize}
-
-\ResumeItem[BIThesis 北京理工大学毕设模板集合(开源项目)]
-{\ResumeUrl{https://github.com/BITNP/BIThesis}{\textbf{BIThesis} 北京理工大学毕设 \LaTeX 模板集合}}
-[主要维护者（开源项目）]
-[2020.04 — 今]
-
-\begin{itemize}
-  \item 根据相关排版要求，\textbf{利用 LaTeX3 (expl3) 设计了同时符合各个学位要求且支持灵活配置的宏包及多套模板}。
-  \item 需求开发和问题修复采用标准工作流，引入了回归测试与基于 GitHub Actions 的测试与持续集成。
-  \item 负责了什么什么；完成了怎样的结果。
+  \item \textbf{语言}: 掌握Java编程技术。常用 Python, Golang；熟悉Vibe Coding故编程不受特定语言限制。可使用\GrayText{TypeScript}、\GrayText{shell}。
+  \item \textbf{存储}: 熟悉MySQL、Redis、ElasticSearch，解决业务场景问题。熟练使用HiveSQL进行离线数据处理。
+  \item \textbf{消息队列}: 熟悉Kafka，理解其原理及应用场景。
+  \item \textbf{工作流}: Git, GitHub, GitLab，ChatGPT，Copoilot。
+  \item \textbf{其他}: 有容器化技术的实践经验，熟悉CI/CD（编译→镜像→部署）。
 \end{itemize}
 
 \section{个人总结}

@@ -325,3 +325,6 @@ TSWLatexianTemp*
 !/src/
 !/resource/
 !/result/
+
+# MacOS
+.DS_Store
