@@ -328,3 +328,7 @@ TSWLatexianTemp*
 
 # MacOS
 .DS_Store
+
+# 忽略我的
+./result/*.pdf
+./src/main.tex
