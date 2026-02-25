@@ -34,12 +34,12 @@
 \ResumeItem
 [公司|职位｜最好一次绩效]
 {贝壳找房（北京）科技有限公司}
-[\textnormal{高级工程师（P6）|\textbf{ 2024年绩效5（杰出）}}]
+[\textnormal{高级工程师（P6）|\textbf{ 2024年绩效5（卓越）、2025年绩效4（优秀）}}]
 [2022.03—至今]
 \begin{itemize}
   \item \textbf{核心职责：}负责贝壳内部人力系统（KeHR、LinkHR、招聘）的运维与迭代，支撑17万+员工的人力业务需求。负责迭代、优化核心B端系统人力中台，支撑全公司业务系统的人力数据需求。独立设计并落地人力标签系统，支撑全公司多业务线标签计算与获取需求。完成集团人力OLAP场景的数据建模，构建OLTP→OLAP分析场景。
   \item \textbf{工程能力：}良好的PRD→功能转化能力、Lambda架构的设计与实现、高并发接口优化经验、分布式系统开发、AI（LLM）应用技术开发、Hive离线数据处理能力。
-  \item \textbf{领导力：}带领企业文化方向研发团队（4人），负责需求拆解、方案评审与交付质量把控，组织CodeReview，保障多系统稳定迭代。
+  \item \textbf{领导力：}企业文化方向研发团队（4人）中担任技术负责人，负责需求拆解、方案评审与交付质量把控，组织CodeReview，保障多系统稳定迭代。
 \end{itemize}
 
 \section{项目经历}
@@ -48,9 +48,10 @@
 [ \textnormal{Lambda架构| HiveSQL→Java(DFS) | LLM \& Prompt | 策略模式}]
 \begin{itemize}
   \item 构建Lambda架构落地实时/离线标签计算分发，T-1数据以HiveSQL/Spark任务计算，实时数据通过API/Kafka处理，StarRocks为两类数据提供统一查询支持。
-  \item 独立研发HiveSQL→Java解析器，将业务规则编码嵌入API/Kafka计算任务，实现计算逻辑统一。
-  \item 设计快照类型数据转时间轴算法（基于开窗函数与偏移量计算）实现历史标签高效追溯与查询，使得MySQL可支撑上亿级标签数据的高效读取。
-  \item 对规则代码进行Druid语法树遍历分析，简化规则代码复杂度，配合LLM、Prompt将简化的代码转为自然语言，统一业务语言。
+  \item 使用Druid对复杂业务规则的CASE-WHEN语句进行AST构建，通过DFS拆解（AND/OR/NOT、德摩根定律），得到原子的CASE-WHEN语句集合。
+  \item 基于原子语句集合，实现Hive→Java解析器，统一离线\&实时标签规则的计算逻辑。
+  \item 基于原子语句集合，配合LLM，实现Hive→自然语言解析器，统一技术代码与规则语言。
+  \item 设计快照类型数据转时间轴算法（基于开窗函数与偏移量计算）实现历史标签高效追溯与查询，使得MySQL可支撑上亿级（逻辑数据量）标签数据的高效读取。
   \item 策略模式实现基于Apollo热配置的通用刷新模块，解决对象类型配置热更新问题。
   \item 完整实现Spring Cache抽象，支持Redis分布式缓存方案，提升标签接口查询性能。
 \end{itemize}
@@ -86,8 +87,8 @@
 \section{教育经历}
 \ResumeItem
 [河海大学|本科生]
-{河海大学}
-[\textnormal{计算机科学与技术，计算机科学与技术学院|} 工学学士]
+{河海大学（211工程）}
+[\textnormal{计算机科学与技术 | 工学学士}]
 [2018.09—2022.06]
 \begin{itemize}
   \item \textbf{GPA: 4.5/5.0(专业前 20\%)}: 获专业奖学金多次。
